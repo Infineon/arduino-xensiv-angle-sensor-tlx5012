@@ -1,0 +1,3 @@
+exclude:
+  # Excluding this board because spi 3wire is not implemented
+  - fqbn: infineon:psoc6:cy8ckit_062s2_ai
