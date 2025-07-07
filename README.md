@@ -1,5 +1,7 @@
 # XENSIV™ TLx5012B Angle Sensor
 
+[![.github/workflows/compile_examples.yml](https://github.com/Infineon/arduino-xensiv-angle-sensor-tlx5012/actions/workflows/compile_examples.yml/badge.svg?branch=devops%2Frelease-lib-wflow-enable)](https://github.com/Infineon/arduino-xensiv-angle-sensor-tlx5012/actions/workflows/compile_examples.yml)
+
 Arduino library of Infineon's highly sensitive [XENSIV™ TLx5012B](https://www.infineon.com/cms/en/product/sensor/magnetic-sensors/magnetic-position-sensors/angle-sensors) 360° magnetic angle sensor.
 
 ### Suported Products
