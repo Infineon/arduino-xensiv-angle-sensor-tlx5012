@@ -1,8 +1,9 @@
 # XENSIV™ TLx5012B Angle Sensor
 
 [![.github/workflows/compile_examples.yml](https://github.com/Infineon/arduino-xensiv-angle-sensor-tlx5012/actions/workflows/compile_examples.yml/badge.svg?branch=devops%2Frelease-lib-wflow-enable)](https://github.com/Infineon/arduino-xensiv-angle-sensor-tlx5012/actions/workflows/compile_examples.yml)
+[![Check links](https://github.com/Infineon/XMC-for-Arduino/actions/workflows/check_links.yml/badge.svg)](https://github.com/Infineon/XMC-for-Arduino/actions/workflows/check_links.yml)
 
-Arduino library of Infineon's highly sensitive [XENSIV™ TLx5012B](https://www.infineon.com/cms/en/product/sensor/magnetic-sensors/magnetic-position-sensors/angle-sensors) 360° magnetic angle sensor.
+Arduino library of Infineon's highly sensitive [XENSIV™ TLx5012B](https://www.infineon.com/products/sensor/magnetic-sensors/magnetic-position-sensors/angle-sensors) 360° magnetic angle sensor.
 
 ### Suported Products
 
@@ -15,7 +16,7 @@ This library supports also all predefined communication variants IIF, PWM, SPC. 
 
 ### Supported Frameworks
 
-The library supports all Infineon XMC microcontroller and Arduino and Arduino compatible devices which can handle a 3Wire (SSC) SPI interface. Therefore have a look at the list of [compatible and tested kits](href="https://xensiv-angle-sensor-tlx5012.readthedocs.io/en/latest/) as well as at the [Porting Guide](href="https://xensiv-angle-sensor-tlx5012.readthedocs.io/en/latest/). You are maybe able to get it running with the right SPI pin setting and a sufficient resistor setup.
+The library supports all Infineon XMC microcontroller and Arduino and Arduino compatible devices which can handle a 3Wire (SSC) SPI interface. Therefore have a look at the list of [compatible and tested kits](https://xensiv-angle-sensor-tlx5012.readthedocs.io/en/latest/) as well as at the [Porting Guide](https://xensiv-angle-sensor-tlx5012.readthedocs.io/en/latest/). You are maybe able to get it running with the right SPI pin setting and a sufficient resistor setup.
 
 
 ## Summary
