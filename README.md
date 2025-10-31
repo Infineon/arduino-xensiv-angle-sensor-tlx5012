@@ -37,7 +37,7 @@ The [XENSIV™ TLx5012B](https://www.infineon.com/cms/en/product/evaluation-boar
 
 
 ## Contributing
-This is a release repository for the Arduino framework. The code base is maintained and developed in the High-Side-Switch Cross-Framework-Platform (XFP) library [repository](https://xensiv-angle-sensor-tlx5012.readthedocs.io/en/latest/index.html).
+This is a release repository for the Arduino framework. The code base is maintained and developed [here](https://github.com/Infineon/xensiv-angle-sensor-tlx5012).
 
 ## Documentation
 The complete documentation of the library as well as detailed information about the XENSIV™ TLx5012B Angle Sensor, can be found [here](https://xensiv-angle-sensor-tlx5012.readthedocs.io/en/latest/index.html).
