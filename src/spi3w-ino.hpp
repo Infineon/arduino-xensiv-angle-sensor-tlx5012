@@ -73,6 +73,53 @@ namespace tle5012
         void    setCSPin(uint8_t cs);
         void    sendReceiveSpi(uint16_t* sent_data, uint16_t size_of_sent_data, uint16_t* received_data, uint16_t size_of_received_data);
 
+   // Implement pure virtual functions from HardwareSPI for XMC
+        #if defined(UC_FAMILY) && (UC_FAMILY == 1 || UC_FAMILY == 4)
+        virtual uint8_t transfer(uint8_t data) override {
+            return SPIClass::transfer(data);
+        }
+        
+        virtual uint16_t transfer16(uint16_t data) override {
+            return SPIClass::transfer16(data);
+        }
+        
+        virtual void transfer(void *buf, size_t count) override {
+            SPIClass::transfer(buf, count);
+        }
+        
+        virtual void usingInterrupt(int interruptNumber) override {
+            SPIClass::usingInterrupt(interruptNumber);
+        }
+        
+        virtual void notUsingInterrupt(int interruptNumber) override {
+            SPIClass::notUsingInterrupt(interruptNumber);
+        }
+        
+        virtual void beginTransaction(arduino::SPISettings settings) override {
+            SPIClass::beginTransaction(settings);
+        }
+        
+        virtual void endTransaction(void) override {
+            SPIClass::endTransaction();
+        }
+        
+        virtual void attachInterrupt() override {
+            SPIClass::attachInterrupt();
+        }
+        
+        virtual void detachInterrupt() override {
+            SPIClass::detachInterrupt();
+        }
+        
+        virtual void begin() override {
+            SPIClass::begin();
+        }
+        
+        virtual void end() override {
+            SPIClass::end();
+        }
+        #endif
+
     private:
 
         uint8_t     mMOSI;               //!< Pin for SPI MOSI
