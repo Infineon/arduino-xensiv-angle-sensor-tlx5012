@@ -73,7 +73,7 @@ namespace tle5012
         void    setCSPin(uint8_t cs);
         void    sendReceiveSpi(uint16_t* sent_data, uint16_t size_of_sent_data, uint16_t* received_data, uint16_t size_of_received_data);
 
-   // Implement pure virtual functions from HardwareSPI for XMC
+   // Implement pure virtual functions from HardwareSPI for XMC boards
         #if defined(UC_FAMILY) && (UC_FAMILY == 1 || UC_FAMILY == 4)
         virtual uint8_t transfer(uint8_t data) override {
             return SPIClass::transfer(data);
