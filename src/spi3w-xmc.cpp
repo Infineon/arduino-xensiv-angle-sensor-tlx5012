@@ -28,7 +28,11 @@ using namespace tle5012;
  * @brief Construct a new SPIClass3W::SPIClass3W object
  *
  */
-SPIClass3W::SPIClass3W(uint8_t spiNum):XMCSPIClass()
+#if defined(ARDUINO_ARCH_XMC) && !defined(ARDUINO_XMC_VERSION_2X_3X)
+    SPIClass3W::SPIClass3W(uint8_t spiNum):XMCSPIClass()
+#else
+    SPIClass3W::SPIClass3W(uint8_t spiNum):SPIClass()
+#endif
 {
     this->mCS = SS;
     this->mMISO = MISO;
@@ -95,11 +99,10 @@ void SPIClass3W::setupSPI()
     m3Wire.channel_config.bus_mode = (XMC_SPI_CH_BUS_MODE_t)XMC_SPI_CH_BUS_MODE_MASTER;
     m3Wire.channel_config.selo_inversion = XMC_SPI_CH_SLAVE_SEL_INV_TO_MSLS;
     m3Wire.channel_config.parity_mode = XMC_USIC_CH_PARITY_MODE_NONE;
-
     m3Wire.cs_config.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL;
     m3Wire.cs_config.output_level = XMC_GPIO_OUTPUT_LEVEL_LOW;
 
-    #if defined(KIT_XMC_2GO_XMC1100_V1) || defined(XMC1100_H_BRIDGE2GO)
+    #if defined(XMC1100_XMC2GO) || defined(XMC1100_H_BRIDGE2GO)
         m3Wire.channel = XMC_SPI0_CH1;
         m3Wire.input_source = XMC_INPUT_C;
         m3Wire.miso_open.input_hysteresis = XMC_GPIO_INPUT_HYSTERESIS_STANDARD;
@@ -108,7 +111,7 @@ void SPIClass3W::setupSPI()
         m3Wire.mosi_open.input_hysteresis = XMC_GPIO_INPUT_HYSTERESIS_STANDARD;
         m3Wire.sck_config.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL_ALT7;
         m3Wire.sck_config.input_hysteresis = XMC_GPIO_INPUT_HYSTERESIS_STANDARD;
-    #elif defined(KIT_XMC14_2GO)
+    #elif defined(XMC1400_XMC2GO)
         m3Wire.channel = XMC_SPI1_CH1;
         m3Wire.input_source = XMC_INPUT_A;
         m3Wire.miso_open.input_hysteresis = XMC_GPIO_INPUT_HYSTERESIS_STANDARD;
@@ -117,7 +120,7 @@ void SPIClass3W::setupSPI()
         m3Wire.mosi_open.input_hysteresis = XMC_GPIO_INPUT_HYSTERESIS_STANDARD;
         m3Wire.sck_config.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL_ALT8;
         m3Wire.sck_config.input_hysteresis = XMC_GPIO_INPUT_HYSTERESIS_STANDARD;
-    #elif defined(KIT_XMC11_BOOT_001) || defined(KIT_XMC13_BOOT_001) || defined(XMC1400_Boot_Kit)
+    #elif defined(XMC1100_Boot_Kit) || defined(XMC1300_Boot_Kit) || defined(XMC1400_Boot_Kit)
         m3Wire.channel = XMC_SPI0_CH0;
         m3Wire.input_source = XMC_INPUT_D;
         m3Wire.miso_open.input_hysteresis = XMC_GPIO_INPUT_HYSTERESIS_STANDARD;
@@ -136,7 +139,7 @@ void SPIClass3W::setupSPI()
         m3Wire.cs_config.output_strength = XMC_GPIO_OUTPUT_STRENGTH_MEDIUM;
         m3Wire.sck_config.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL_ALT4;
         m3Wire.input_source = XMC_INPUT_D;
-    #elif defined(KIT_XMC47_RELAX)
+    #elif defined(XMC4700_Relax_Kit)
         m3Wire.miso_close.output_strength = XMC_GPIO_OUTPUT_STRENGTH_MEDIUM;
         m3Wire.miso_open.output_strength = XMC_GPIO_OUTPUT_STRENGTH_MEDIUM;
         m3Wire.mosi_open.output_strength = XMC_GPIO_OUTPUT_STRENGTH_MEDIUM;

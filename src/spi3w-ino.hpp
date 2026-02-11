@@ -51,15 +51,15 @@ namespace tle5012
 #elif defined(ARDUINO_ARCH_SAMD)
     // This part is yet to be implemented
     class SPIClass3W : public SPIClassSAMD {
-#elif defined(ARDUINO_ARCH_XMC)
-    // XMC platform - inherit from XMCSPIClass
+#elif defined(ARDUINO_ARCH_XMC) && !defined(ARDUINO_XMC_VERSION_2X_3X)
+    // XMC platform - inherit from XMCSPIClass for latest core version
     class SPIClass3W : public XMCSPIClass {
 #else
     class SPIClass3W : public SPIClass {
 #endif
 
     public:
-        #if defined(ARDUINO_ARCH_XMC)
+        #if defined(UC_FAMILY) && (UC_FAMILY == 1 || UC_FAMILY == 4)
             #define SPI3W_INO SPI3W_XMC
         #elif defined(ESP32) && (ALTERNATIVE_PINS == 3)
             #define SPI3W_INO SPI3W_ESP32
@@ -83,7 +83,7 @@ namespace tle5012
         uint8_t     mSCK;                //!< Pin for SPI System Clock
 
 
-        #if defined(ARDUINO_ARCH_XMC)
+        #if defined(UC_FAMILY) && (UC_FAMILY == 1 || UC_FAMILY == 4)
             /*!
             * The enhanced 3-Wire parameter structure includes miso/mosi open and close
             * setting and for the enable pin setting of the Sensor2Go evaluation boards.
