@@ -28,7 +28,11 @@ using namespace tle5012;
  * @brief Construct a new SPIClass3W::SPIClass3W object
  *
  */
-SPIClass3W::SPIClass3W(uint8_t spiNum):SPIClass()
+#if defined(ARDUINO_ARCH_XMC) && !defined(ARDUINO_XMC_VERSION_2X_3X)
+    SPIClass3W::SPIClass3W(uint8_t spiNum):XMCSPIClass()
+#else
+    SPIClass3W::SPIClass3W(uint8_t spiNum):SPIClass()
+#endif
 {
     this->mCS = SS;
     this->mMISO = MISO;
@@ -95,8 +99,7 @@ void SPIClass3W::setupSPI()
     m3Wire.channel_config.bus_mode = (XMC_SPI_CH_BUS_MODE_t)XMC_SPI_CH_BUS_MODE_MASTER;
     m3Wire.channel_config.selo_inversion = XMC_SPI_CH_SLAVE_SEL_INV_TO_MSLS;
     m3Wire.channel_config.parity_mode = XMC_USIC_CH_PARITY_MODE_NONE;
-
-    m3Wire.cs_config.mode = OUTPUT;
+    m3Wire.cs_config.mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL;
     m3Wire.cs_config.output_level = XMC_GPIO_OUTPUT_LEVEL_LOW;
 
     #if defined(XMC1100_XMC2GO) || defined(XMC1100_H_BRIDGE2GO)
